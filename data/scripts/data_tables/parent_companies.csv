@@ -1,0 +1,201 @@
+company_id,company_name,founding_date
+1,"Rodriguez, Figueroa and Sanchez",1989-06-30
+2,"Garcia, Yang and Gardner",2008-09-16
+3,Johnson and Sons,1995-10-31
+4,"Guzman, Hoffman and Baldwin",2008-07-19
+5,Cole LLC,1980-06-10
+6,Wolfe LLC,1998-11-28
+7,Lewis LLC,1986-12-15
+8,James LLC,2003-05-29
+9,"Baker, Williams and Stevens",1988-06-29
+10,Miller-Carter,2004-08-10
+11,"Lee, Jones and Stanley",1999-09-10
+12,Wyatt Inc,2005-11-13
+13,Chavez-Flowers,1991-01-25
+14,Kelly-Santiago,1984-11-09
+15,"Reid, Ferguson and Sanchez",2011-06-16
+16,Nelson-Schaefer,1994-12-11
+17,"Nguyen, Tate and Brown",1982-03-08
+18,Morales-Jones,2001-05-31
+19,Rios Group,2011-03-23
+20,Baker and Sons,1997-11-17
+21,"Richards, Hurst and Ross",1994-12-04
+22,Hicks Inc,1983-03-17
+23,Hernandez and Sons,2008-09-22
+24,"Brown, James and Ferrell",1997-02-08
+25,"Valencia, Smith and Le",1998-02-26
+26,"Peterson, Carter and Moore",1980-03-21
+27,"Liu, Baker and Mason",1992-02-27
+28,"Gaines, Harrell and Evans",2014-07-19
+29,"Gonzalez, Brooks and Martin",1980-01-15
+30,"Nguyen, Smith and Hickman",2000-12-04
+31,Brown PLC,1985-05-11
+32,Dennis Inc,1988-07-22
+33,Keller PLC,1991-03-28
+34,Rose-Obrien,1994-05-31
+35,"Campos, Vaughn and Marquez",2007-02-25
+36,"Santos, Kim and Holmes",1988-03-26
+37,Walker LLC,1981-06-06
+38,"Spencer, Chapman and Smith",1984-01-03
+39,Jones Inc,2002-06-26
+40,Palmer LLC,2013-01-12
+41,Ryan Ltd,2012-03-01
+42,Mueller Group,1992-12-15
+43,Davis Group,2004-02-10
+44,Jenkins-Shields,1983-09-08
+45,"Valdez, Lucas and Brown",2003-02-02
+46,Wright and Sons,2010-07-12
+47,Henderson LLC,2011-06-25
+48,Baxter Inc,2010-02-26
+49,"Garcia, Pearson and Fernandez",1981-01-01
+50,House and Sons,1991-04-26
+51,Tucker-Lewis,2007-04-16
+52,Martin Inc,2006-07-26
+53,House-Glover,1999-05-30
+54,Horton-Cross,2013-02-12
+55,Lee and Sons,1983-12-24
+56,"Fitzgerald, Brown and Edwards",1983-05-31
+57,"Woods, Calhoun and Schmidt",1983-11-14
+58,"Miller, Lopez and Larson",1996-01-03
+59,Wilson-Zamora,1996-10-02
+60,"Wheeler, Harvey and Barnes",2001-07-12
+61,Harris-Moran,1996-03-29
+62,Foster-Powers,2000-05-31
+63,Stewart-Walton,1984-12-08
+64,Ellis PLC,1986-10-21
+65,Medina PLC,1998-01-17
+66,Mahoney Inc,1996-08-15
+67,Mitchell-Kim,2000-08-02
+68,"Riggs, Roman and Rice",2000-05-16
+69,"Garcia, Humphrey and Baker",1987-04-14
+70,"Tran, Nelson and Jacobs",2003-05-02
+71,Watts LLC,2014-05-24
+72,King-Odonnell,1983-06-16
+73,Walters LLC,1982-12-31
+74,Cook and Sons,1997-10-28
+75,Figueroa PLC,2009-02-07
+76,"Smith, Jones and Ware",1990-02-21
+77,"Johnson, Wood and Tran",2009-03-31
+78,Williams LLC,1982-09-18
+79,Clark-Wright,1986-12-29
+80,Deleon-Henson,2007-08-27
+81,"Brady, Frost and Young",1991-01-22
+82,Keith Inc,1992-03-16
+83,"Middleton, Patton and Jenkins",1996-11-20
+84,Moore-Haynes,2006-01-12
+85,Garrison and Sons,1993-07-31
+86,Bailey-Hoover,1995-06-27
+87,Johnson and Sons,2007-02-11
+88,Ramirez-Jones,1998-12-29
+89,May-Ross,2002-07-14
+90,Wilson LLC,1992-02-25
+91,"Estes, Baker and Rodriguez",2009-07-28
+92,Chandler-Edwards,2014-10-20
+93,Cruz PLC,1992-12-07
+94,Williams-Graham,1993-05-29
+95,Reynolds-Rush,2002-06-21
+96,"Edwards, Charles and Cortez",2000-06-08
+97,"Parker, Ortiz and Powell",2000-02-13
+98,"Martinez, Fisher and Bentley",1991-11-04
+99,"Carroll, Sullivan and Bass",2000-09-04
+100,Clark-Floyd,2001-12-05
+101,Ramos-Lowe,2014-10-14
+102,Leon-Moyer,1991-07-19
+103,"Miller, Robertson and Schultz",2002-10-23
+104,Cardenas and Sons,2001-02-14
+105,Drake and Sons,1981-08-30
+106,Sanchez Group,1984-12-15
+107,Perry-Soto,1993-03-25
+108,"Horton, Snyder and Sanchez",1980-05-17
+109,Osborne and Sons,1991-12-20
+110,"Holmes, Williams and Wright",1988-04-04
+111,Anderson-Marshall,2001-08-04
+112,Salazar-Ball,2014-05-08
+113,Rivas-Kelley,1990-10-30
+114,"Hensley, Cole and Walton",1998-11-14
+115,"Washington, Allen and Gonzales",1999-06-11
+116,Nelson LLC,1985-06-25
+117,Hernandez Group,1990-05-25
+118,"Lewis, Perry and Rivera",2011-09-15
+119,Brown-Wall,2006-07-03
+120,"Shah, Smith and Gilmore",2005-11-19
+121,Smith-Bell,2006-07-16
+122,Medina-Navarro,1995-01-03
+123,Robinson-Graham,1981-12-22
+124,Rogers-Shelton,2007-07-07
+125,"Martin, Mcdonald and Anderson",1981-11-01
+126,Vargas-Alvarado,1985-09-17
+127,"Patterson, Camacho and White",1997-09-14
+128,Murphy-Gibson,2002-12-19
+129,Ramirez-Bean,2008-09-08
+130,Conley-Ruiz,1983-07-18
+131,Walker-Jones,1982-09-27
+132,Herring and Sons,1981-05-21
+133,"Hernandez, Martinez and Caldwell",1994-10-31
+134,Lyons-Wang,1991-06-02
+135,"Lawson, Adkins and Wilson",1991-02-22
+136,Rodriguez-Johnson,2001-03-24
+137,"Byrd, Rubio and Sanders",1993-06-30
+138,Vargas Ltd,1996-07-11
+139,Terry LLC,1988-03-27
+140,"Patton, Reed and Patterson",2005-03-20
+141,Hunter LLC,1980-11-10
+142,Short-Garcia,2004-08-24
+143,"Snow, Stevens and Hernandez",1991-12-26
+144,"Boyd, Santos and Gilbert",2012-11-25
+145,Graham-Simon,1998-04-07
+146,Christian-Rivas,1985-11-24
+147,Keith-Sanchez,2011-08-16
+148,"Bishop, Gray and Johnson",2002-02-12
+149,Freeman LLC,1997-07-31
+150,Ramirez-Carlson,1998-10-19
+151,"Smith, Vaughan and Miller",2007-08-28
+152,Peters-Allen,2012-05-25
+153,"Joseph, West and Smith",2000-01-09
+154,Sullivan and Sons,2000-11-01
+155,"Perkins, Kennedy and Schmidt",2008-12-14
+156,"Pierce, Bell and Chavez",2000-11-12
+157,Hall-Griffith,2001-06-21
+158,Newton Ltd,1992-08-06
+159,Robinson Group,1998-10-25
+160,"Lawrence, Wolf and Carlson",1986-11-03
+161,Phillips LLC,1992-03-18
+162,Smith-Ferguson,1998-09-01
+163,Mccann PLC,1999-11-18
+164,"Raymond, Little and Mullins",1986-12-24
+165,Andrews Group,2012-07-29
+166,Peterson-Sheppard,1997-03-07
+167,Wilson-Jones,2013-06-18
+168,Ray Ltd,1983-08-25
+169,Hernandez PLC,2000-09-03
+170,Mcknight Inc,2008-04-27
+171,"Carlson, Montgomery and Rowe",2005-11-19
+172,Kerr-Evans,2009-03-07
+173,Carroll-Brown,1986-10-02
+174,Garrett LLC,1985-07-10
+175,Allen PLC,1985-02-08
+176,Smith Group,2011-12-23
+177,Johnson-Roberts,1999-03-29
+178,"Heath, Jones and Hall",1998-01-01
+179,"Lawrence, Lara and Gonzalez",1987-10-23
+180,"Walker, Hernandez and Baker",1989-09-05
+181,Brown LLC,1999-08-22
+182,Martinez-Barker,2007-05-23
+183,Mason-Snyder,1985-06-22
+184,"Williams, Reynolds and Morris",1997-01-13
+185,Davis Ltd,1981-05-30
+186,"Underwood, Johnston and Hines",1991-12-03
+187,Stone-Ramos,1998-12-05
+188,Shea Group,2013-06-17
+189,Harrison Group,2002-09-06
+190,Santiago-Hodge,2002-06-11
+191,Steele-Roberts,2007-04-02
+192,"Johnson, Miller and King",1987-11-21
+193,Hancock-Bryan,1980-01-29
+194,"Booth, Murray and Brown",2004-08-14
+195,"Avila, Garrett and Wolf",1993-11-07
+196,Dunn-Pennington,2009-10-24
+197,"Washington, Johnson and Mccoy",1996-04-13
+198,"Moore, Pierce and Tran",1986-05-05
+199,Gay Inc,2011-05-27
+200,Holland and Sons,2013-11-30

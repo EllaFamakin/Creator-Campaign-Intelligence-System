@@ -1,0 +1,395 @@
+brand_id,brand_name,company_id,industry
+1,"Carter, Thornton and Perry",1,Beauty
+2,Baird-Sanchez,1,Beauty
+3,"Thomas, Lee and Greene",1,Gaming
+4,"Suarez, Shields and Hill",2,Fitness
+5,Morgan-French,2,Fitness
+6,Hoover-Campbell,3,Gaming
+7,Monroe-Carpenter,4,Gaming
+8,"Burns, Hernandez and Ryan",5,Fashion
+9,Cook-Hines,5,Beauty
+10,Gibson-Morris,5,Fashion
+11,Pollard and Sons,6,Beauty
+12,"Reyes, Chase and Jenkins",6,Beauty
+13,Garner-Thornton,7,Fitness
+14,Hughes-Alvarado,8,Fashion
+15,"Pollard, Simpson and Johnson",9,Beauty
+16,"Sanford, Rivera and Garcia",9,Fashion
+17,Garcia-Lozano,9,Fitness
+18,Bowen Group,10,Gaming
+19,"Booker, Jones and Harrington",10,Gaming
+20,Morgan-Schwartz,10,Fashion
+21,"Miller, Murphy and Craig",11,Fitness
+22,"James, Stewart and Higgins",11,Tech
+23,Brennan-Johnson,12,Food & Beverage
+24,Young Ltd,12,Health
+25,Bright-Francis,12,Health
+26,Good-Hodges,13,Health
+27,"Brennan, Wallace and Benson",14,Gaming
+28,Williams Inc,15,Food & Beverage
+29,Howard-Jordan,15,Food & Beverage
+30,Schmidt PLC,16,Fitness
+31,"Sparks, Jackson and Miller",17,Beauty
+32,Harvey-Allen,17,Beauty
+33,"Thomas, Murray and King",18,Beauty
+34,Estrada-Nolan,18,Food & Beverage
+35,Santana-Byrd,19,Fashion
+36,Jones LLC,19,Food & Beverage
+37,"Evans, Hayden and Vaughn",20,Gaming
+38,Bruce-Gonzalez,21,Fashion
+39,Castaneda-Rodriguez,21,Beauty
+40,Armstrong-Andrews,22,Beauty
+41,"Phillips, Spence and Barrett",22,Fashion
+42,Smith-Grimes,23,Health
+43,"Beltran, Lozano and Mcgee",23,Gaming
+44,Parsons-Hall,24,Health
+45,Robinson-Lee,24,Food & Beverage
+46,Byrd-Le,24,Fashion
+47,"Becker, Taylor and Davis",25,Gaming
+48,"Lucas, Parker and Alexander",26,Beauty
+49,"Diaz, Anderson and Browning",27,Fitness
+50,Burgess-Thompson,27,Health
+51,Buchanan LLC,27,Food & Beverage
+52,"Shaw, Nelson and Martin",28,Health
+53,Coffey-Phillips,29,Health
+54,Brock-Mcdonald,30,Tech
+55,Taylor and Sons,31,Tech
+56,"Ramsey, Whitney and Coffey",31,Gaming
+57,"Diaz, Gibbs and Smith",32,Fitness
+58,"Martinez, Richardson and Curry",32,Food & Beverage
+59,Richards-Carson,33,Fitness
+60,Rodriguez-Hall,33,Gaming
+61,Harvey PLC,34,Gaming
+62,Herman-Walker,34,Gaming
+63,Reid Group,35,Beauty
+64,"Turner, Ortiz and Taylor",35,Fashion
+65,Torres Group,35,Gaming
+66,Davis PLC,36,Fashion
+67,Price LLC,37,Fitness
+68,"Avery, Horton and Fernandez",37,Fitness
+69,"Newton, Moore and Perry",37,Tech
+70,Bass PLC,38,Food & Beverage
+71,Crosby-Ramirez,38,Gaming
+72,"Wood, Ramos and Sampson",39,Fashion
+73,Garcia-Jennings,39,Fitness
+74,"Winters, Newman and Brown",39,Gaming
+75,Lopez-Martinez,40,Health
+76,Davis-Lewis,40,Health
+77,"Harper, Smith and Buchanan",41,Fitness
+78,Zhang PLC,42,Health
+79,Jones PLC,43,Tech
+80,Willis and Sons,43,Food & Beverage
+81,Schroeder-Kramer,44,Fitness
+82,"Smith, Garrison and Thomas",45,Gaming
+83,Fernandez and Sons,45,Food & Beverage
+84,Guerrero Inc,45,Fitness
+85,Smith and Sons,46,Tech
+86,"Morris, Thompson and Williams",46,Tech
+87,"Fisher, Wilson and Brown",46,Gaming
+88,Strickland-Palmer,47,Fitness
+89,Hayes and Sons,47,Food & Beverage
+90,"Williams, Logan and Camacho",48,Fitness
+91,"Turner, Schneider and Johnson",49,Fashion
+92,Boone-Simmons,49,Fashion
+93,Henry Group,49,Food & Beverage
+94,Lam LLC,50,Fashion
+95,"Hernandez, Martinez and Weber",50,Tech
+96,"Kelley, Nguyen and Vang",50,Fashion
+97,"Phillips, Wagner and Jordan",51,Food & Beverage
+98,"Wilson, Pena and Rich",51,Fitness
+99,"Le, Lewis and Hayes",52,Fashion
+100,Gutierrez Group,53,Beauty
+101,Perry-Davis,53,Health
+102,Edwards-Scott,54,Health
+103,Mcdaniel Group,55,Fitness
+104,Davis Inc,56,Fitness
+105,Reynolds Ltd,56,Health
+106,"Watson, Anderson and Brown",56,Gaming
+107,"Hoffman, Santiago and Jenkins",57,Fashion
+108,"Pugh, Henderson and Moon",57,Beauty
+109,Schmitt PLC,58,Tech
+110,Bell-Lane,58,Fashion
+111,Moore Group,59,Fashion
+112,Boone LLC,59,Food & Beverage
+113,"Richardson, Farmer and Andrews",60,Health
+114,Bruce-Villegas,60,Beauty
+115,"Austin, Day and Johnson",60,Gaming
+116,"Gallegos, Adams and White",61,Beauty
+117,"Farmer, Dorsey and Bell",61,Gaming
+118,Kane PLC,61,Fashion
+119,"Morales, Thomas and Schultz",62,Health
+120,Davis PLC,62,Gaming
+121,Bennett Group,63,Beauty
+122,Moore-Collins,63,Food & Beverage
+123,Frank-Bradley,64,Fitness
+124,Ware and Sons,64,Tech
+125,Webster Inc,65,Gaming
+126,"Miller, Ramos and Coleman",66,Food & Beverage
+127,"Ramos, Nelson and Fischer",66,Fashion
+128,Reed Inc,66,Health
+129,Gregory-Watkins,67,Fashion
+130,"Estrada, Williams and Foster",68,Health
+131,"Brown, Harris and Dougherty",69,Food & Beverage
+132,Duran LLC,69,Health
+133,Wilson-Jimenez,69,Gaming
+134,Thompson-James,70,Fashion
+135,"Hall, Hansen and Barnett",70,Fitness
+136,Jones-Hensley,70,Fitness
+137,Graham Group,71,Health
+138,Atkins PLC,71,Fitness
+139,Berry-Mckinney,72,Health
+140,Roberts-Sullivan,72,Fashion
+141,Jackson-Meza,72,Beauty
+142,Collier-Gillespie,73,Food & Beverage
+143,Kim Inc,73,Tech
+144,Graham Group,73,Beauty
+145,"Miller, Harrell and Reese",74,Food & Beverage
+146,Cook and Sons,75,Fitness
+147,Dixon Inc,75,Beauty
+148,"Hicks, Bullock and Bailey",76,Fashion
+149,"Mullen, Brewer and Hernandez",77,Beauty
+150,Thomas and Sons,78,Tech
+151,Morrison Ltd,78,Health
+152,Thompson Ltd,78,Beauty
+153,Marshall-Elliott,79,Health
+154,"Cole, Glass and Cunningham",79,Fitness
+155,"Downs, Morris and Maddox",79,Fitness
+156,Hernandez-Jones,80,Tech
+157,Welch-Hogan,80,Fashion
+158,"Brown, Romero and Collins",80,Fitness
+159,Johnson-Wood,81,Fashion
+160,Jones-Lin,81,Health
+161,Gilbert PLC,82,Tech
+162,Ford-Spencer,82,Fitness
+163,"Huang, Cole and Pacheco",82,Fashion
+164,"Lopez, Jacobs and Mason",83,Gaming
+165,Hayes LLC,83,Fitness
+166,"Miller, Lucas and Williams",83,Gaming
+167,"Kim, Gonzales and Mills",84,Tech
+168,Cox LLC,84,Gaming
+169,Ortiz-Morgan,85,Food & Beverage
+170,"Williams, Mccoy and Cook",85,Tech
+171,Davis-Gregory,85,Fashion
+172,King-York,86,Beauty
+173,"Marks, Cook and Aguilar",86,Fitness
+174,Rangel LLC,87,Beauty
+175,"Hale, Myers and Larson",88,Beauty
+176,Collins Group,88,Fashion
+177,"Conner, Li and Santiago",89,Fitness
+178,"Osborn, Gaines and Davis",89,Fashion
+179,"Henderson, Cox and Cox",89,Fitness
+180,Bean LLC,90,Beauty
+181,Lee-Cooke,91,Gaming
+182,Jones Inc,91,Beauty
+183,"Wise, Conley and Stephenson",91,Fitness
+184,Stanley PLC,92,Beauty
+185,Harper and Sons,93,Beauty
+186,White Ltd,93,Fashion
+187,"Lamb, Martin and Kim",94,Food & Beverage
+188,Diaz-Ball,95,Tech
+189,Bishop-Goodwin,95,Fitness
+190,Young-Allen,95,Fashion
+191,Mckee-Lee,96,Gaming
+192,"Valentine, Joyce and Murray",97,Fashion
+193,Strickland-Shaw,97,Tech
+194,Burch-Montoya,97,Fitness
+195,"Taylor, Wright and Davidson",98,Health
+196,Spencer-Garcia,98,Tech
+197,"Rosales, Mitchell and Hines",99,Beauty
+198,Cole-Palmer,100,Gaming
+199,Davis-Lozano,101,Food & Beverage
+200,Wilkerson-Arias,101,Tech
+201,Brown-Shaw,102,Tech
+202,Hughes Inc,102,Health
+203,Walker-Flores,103,Beauty
+204,Combs Ltd,103,Gaming
+205,Moody-Taylor,103,Gaming
+206,Lowery-Kennedy,104,Beauty
+207,Blake Group,104,Beauty
+208,Gilbert-Bullock,104,Tech
+209,Scott and Sons,105,Food & Beverage
+210,"Bentley, Lynch and Henderson",105,Health
+211,Young-Martinez,105,Health
+212,Barnes PLC,106,Fitness
+213,Brown-Copeland,107,Fitness
+214,Carlson-Smith,108,Tech
+215,"Andrews, Higgins and Carter",108,Fitness
+216,Mendez and Sons,108,Tech
+217,"Butler, Beck and Miller",109,Food & Beverage
+218,Jones-Fox,110,Fitness
+219,"Hartman, Romero and Smith",110,Health
+220,Williams-Hughes,111,Tech
+221,King-Smith,112,Beauty
+222,Cooper Ltd,112,Beauty
+223,"Fuller, Ingram and Moss",112,Gaming
+224,Anderson-Bell,113,Health
+225,Li-Thompson,113,Beauty
+226,"Marshall, Dominguez and Welch",113,Beauty
+227,Brown Group,114,Fitness
+228,Carter Inc,115,Tech
+229,Blackwell LLC,115,Tech
+230,Robertson-Hays,116,Health
+231,"Kennedy, Johnson and Lucas",117,Beauty
+232,Kelly-Norman,117,Fitness
+233,"Rivera, Martinez and Richardson",118,Beauty
+234,Paul-Kline,118,Tech
+235,Morgan-Lopez,119,Health
+236,"Jimenez, Glass and Stone",119,Health
+237,Acosta Inc,120,Food & Beverage
+238,Morrison-Short,120,Tech
+239,"Carter, Garcia and Murphy",121,Gaming
+240,Parker-Morrison,121,Health
+241,Jackson-Wallace,121,Fashion
+242,Williams-Berg,122,Gaming
+243,Mendez-Graham,122,Tech
+244,"Whitney, Gould and Jones",122,Fitness
+245,"Sullivan, Palmer and Brady",123,Food & Beverage
+246,Cisneros and Sons,124,Beauty
+247,"Gregory, Kim and Martinez",125,Gaming
+248,Osborne LLC,125,Fashion
+249,Reyes-Bradley,125,Beauty
+250,"Hernandez, Cole and Watson",126,Food & Beverage
+251,Hines-Berry,126,Beauty
+252,"Richardson, Edwards and Ramirez",126,Beauty
+253,Johnson and Sons,127,Tech
+254,Holmes-Mcintyre,127,Fashion
+255,Green LLC,127,Health
+256,"Griffin, Davies and Mitchell",128,Fitness
+257,Gonzalez-Taylor,128,Beauty
+258,Hayes Ltd,128,Fashion
+259,Osborn-Cochran,129,Health
+260,Contreras-Mckinney,130,Beauty
+261,"Daniels, Vance and York",131,Beauty
+262,"Mckinney, Graves and Thompson",131,Gaming
+263,Hicks-Martinez,131,Health
+264,Conner and Sons,132,Tech
+265,Johnson-Spencer,133,Fashion
+266,Mcdonald-Bird,134,Fashion
+267,Salazar Inc,135,Beauty
+268,Parker Ltd,135,Fashion
+269,"Mendoza, Jenkins and Ortiz",135,Beauty
+270,"Jones, Compton and Day",136,Gaming
+271,Owens-Holmes,136,Fashion
+272,Humphrey PLC,137,Fashion
+273,"Matthews, Saunders and Anderson",137,Food & Beverage
+274,"Bartlett, Brown and Martinez",137,Food & Beverage
+275,Torres and Sons,138,Gaming
+276,Donovan-Perez,139,Food & Beverage
+277,"Jacobson, Singleton and King",139,Fitness
+278,"Huber, Hill and Weber",139,Food & Beverage
+279,"Ferguson, Shaw and Jackson",140,Fitness
+280,"Moore, Hopkins and Le",140,Gaming
+281,"Morgan, Bradshaw and Williams",141,Food & Beverage
+282,Miller Ltd,141,Tech
+283,"Baker, Clark and Armstrong",141,Food & Beverage
+284,"Fowler, Jimenez and Burton",142,Beauty
+285,May-Turner,143,Fashion
+286,Ballard Ltd,143,Fashion
+287,Evans-Jones,144,Beauty
+288,Moore Group,145,Fitness
+289,Marshall-Peterson,145,Fashion
+290,Edwards Ltd,145,Food & Beverage
+291,Gross-Valencia,146,Food & Beverage
+292,Anderson-Wood,147,Fitness
+293,"Rodriguez, Allen and Martinez",148,Food & Beverage
+294,Wright-Davis,148,Fitness
+295,Dougherty-Lin,149,Health
+296,Wright-Grimes,149,Fashion
+297,Li PLC,150,Food & Beverage
+298,"Edwards, Hines and Jimenez",150,Fashion
+299,"Owens, Koch and Jimenez",150,Health
+300,Landry PLC,151,Fashion
+301,Levy-Lewis,151,Beauty
+302,Williams-Campbell,151,Gaming
+303,"Khan, Pena and Ruiz",152,Food & Beverage
+304,"Smith, Rodriguez and Anderson",152,Gaming
+305,Luna-Gallagher,152,Beauty
+306,Williams-Williams,153,Food & Beverage
+307,"Lee, Tran and Jones",154,Beauty
+308,"Cole, Pierce and Bryan",155,Fashion
+309,"Becker, Wilson and Hester",155,Fitness
+310,Brooks-Hatfield,155,Food & Beverage
+311,"Mcmillan, Fischer and Gonzalez",156,Fashion
+312,"Morales, Williams and Williams",156,Fitness
+313,"Cook, Wells and Bryant",157,Food & Beverage
+314,"Barry, Taylor and Velazquez",157,Fitness
+315,Martin-Ewing,157,Gaming
+316,"Kirby, Wheeler and Romero",158,Health
+317,"Patel, Erickson and Evans",158,Food & Beverage
+318,Richardson Ltd,158,Fashion
+319,Whitney PLC,159,Food & Beverage
+320,Robles-Swanson,159,Health
+321,"Soto, Carlson and Baker",160,Beauty
+322,"Patton, Parsons and Lane",161,Tech
+323,"Williams, Castillo and Warren",161,Health
+324,"Harvey, Randall and Hernandez",161,Food & Beverage
+325,"Allen, Armstrong and Graves",162,Beauty
+326,Smith LLC,163,Health
+327,Hernandez-Vaughn,163,Fitness
+328,Shaw-Carr,164,Food & Beverage
+329,Salas-Fitzgerald,164,Fitness
+330,Thornton PLC,164,Gaming
+331,Hoffman Ltd,165,Fashion
+332,Fox-Edwards,165,Gaming
+333,Stevens PLC,166,Fashion
+334,Payne-Lowe,166,Beauty
+335,"Becker, Lara and Baker",167,Beauty
+336,Lee-Wright,168,Fitness
+337,"Evans, David and Hendrix",168,Fashion
+338,Bush-Vaughn,168,Beauty
+339,Stewart-Bailey,169,Fashion
+340,"Hill, Martinez and Rhodes",169,Fashion
+341,Huang-Foster,170,Tech
+342,Blevins-Ballard,171,Beauty
+343,Williams-Moses,172,Food & Beverage
+344,Reed Group,172,Health
+345,"Scott, Mendoza and Harris",173,Food & Beverage
+346,"Nelson, Hoffman and Nelson",174,Gaming
+347,Gilbert PLC,175,Gaming
+348,Sanchez Ltd,176,Food & Beverage
+349,"Perez, Hall and Garcia",177,Health
+350,Love-Garcia,177,Tech
+351,Smith PLC,177,Fashion
+352,Russell Group,178,Fitness
+353,Santos-Avila,178,Fitness
+354,Morris-Brewer,178,Health
+355,Pearson and Sons,179,Health
+356,"Rodgers, Jefferson and Johnson",180,Tech
+357,Butler and Sons,181,Fitness
+358,Osborn Group,182,Food & Beverage
+359,Lopez-Curry,182,Health
+360,Mcdowell-Smith,182,Tech
+361,"Morrison, Hebert and Rogers",183,Health
+362,Hays-Daniels,183,Gaming
+363,Small-Anderson,183,Health
+364,"Mcdonald, Lee and Rodriguez",184,Food & Beverage
+365,Simon Ltd,185,Health
+366,Higgins-Smith,186,Beauty
+367,Gibbs-Bradley,186,Tech
+368,Thompson Ltd,186,Health
+369,Wilcox-Robertson,187,Health
+370,Morales Inc,188,Fitness
+371,Holden Group,188,Fitness
+372,Boyle-Smith,189,Food & Beverage
+373,Young-Molina,189,Food & Beverage
+374,Turner-Sharp,190,Fitness
+375,Green LLC,191,Gaming
+376,"Young, Contreras and Marshall",192,Tech
+377,Sullivan PLC,193,Food & Beverage
+378,"Carrillo, Vaughn and Fowler",193,Health
+379,Richardson-Walker,194,Health
+380,Mendoza Group,195,Food & Beverage
+381,"Zhang, Brooks and Miles",195,Gaming
+382,Todd-Pham,196,Tech
+383,Gill Ltd,196,Gaming
+384,"Marks, Miller and Griffin",196,Health
+385,"Cox, Stark and Rodriguez",197,Food & Beverage
+386,"Leach, Harris and Herrera",197,Beauty
+387,Murphy PLC,197,Beauty
+388,Wilson-Harris,198,Fitness
+389,"Burns, Nolan and Griffin",198,Fashion
+390,Chavez PLC,199,Beauty
+391,Bryant-Brown,199,Beauty
+392,Chambers-Parker,200,Tech
+393,Foster Inc,200,Food & Beverage
+394,"Robinson, Jones and Henderson",200,Gaming
