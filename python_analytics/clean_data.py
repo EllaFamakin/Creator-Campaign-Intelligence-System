@@ -1,7 +1,15 @@
 import psycopg2
-import pandas as pd
+from colorama import init, Fore, Style
 
-# ── Connect to database ────────────────────────────────
+init(autoreset=True)
+
+def log_success(msg): print(f"{Fore.GREEN}  ✅ {msg}{Style.RESET_ALL}")
+def log_warn(msg):    print(f"{Fore.YELLOW}  ⚠️  {msg}{Style.RESET_ALL}")
+def log_info(msg):    print(f"{Fore.CYAN}  ℹ️  {msg}{Style.RESET_ALL}")
+def log_header(msg):  print(f"\n{Fore.MAGENTA}{'='*60}\n   {msg}\n{'='*60}{Style.RESET_ALL}")
+def log_sub(msg):     print(f"{Fore.WHITE}  {msg}{Style.RESET_ALL}")
+
+# ── Connect ───────────────────────────────────────────────────
 conn = psycopg2.connect(
     dbname="influencer_marketing",
     user="postgres",
@@ -10,177 +18,147 @@ conn = psycopg2.connect(
     port=5432
 )
 cur = conn.cursor()
-print("✅ Connected to database\n")
-print("=" * 60)
+log_success("Connected to influencer_marketing\n")
 
-# ══════════════════════════════════════════════════════
-# 1. CHECK FOR NULL VALUES
-# ══════════════════════════════════════════════════════
-print("\n📋 CHECK 1: NULL VALUES")
-print("-" * 60)
+# ══════════════════════════════════════════════════════════════
+# 1. NULL VALUE CHECKS
+# ══════════════════════════════════════════════════════════════
+log_header("CHECK 1: NULL VALUES")
 
-# These columns are INTENTIONALLY nullable — skip them
-# campaigns.product_id → brand level campaign
-# parent_companies.founding_date → optional field
-# collaborations.payment_amount → handled separately below
-
+# Standard null checks — excludes intentionally nullable fields
 null_checks = {
-    "creators": [
-        ("creator_name",   "discard"),
-        ("niche",          "discard"),
-        ("follower_count", "discard"),
-        ("post_count",     "discard")
-    ],
-    "brands": [
-        ("brand_name",  "discard"),
-        ("company_id",  "discard"),
-        ("industry",    "flag")
-    ],
-    "parent_companies": [
-        ("company_name", "discard")
-    ],
+    # creators.creator_name and niche excluded — intentionally nullable
+    "creators":         ["follower_count", "post_count"],
+    "brands":           ["brand_name", "company_id", "industry"],
+    "parent_companies": ["company_name"],
+    # campaigns.product_id excluded — intentionally nullable
     "campaigns": [
-        ("campaign_name",  "discard"),
-        ("campaign_type",  "flag"),
-        ("campaign_goal",  "flag"),
-        ("start_date",     "discard"),
-        ("end_date",       "discard"),
-        ("budget",         "flag")
+        "campaign_name", "campaign_type", "campaign_goal",
+        "start_date", "end_date", "budget"
     ],
-    "collaborations": [
-        ("campaign_id",  "discard"),
-        ("creator_id",   "discard"),
-        ("content_type", "flag")
-    ],
+    # collaborations.payment_amount handled separately
+    "collaborations": ["campaign_id", "creator_id", "content_type"],
+    # performance_metrics goal-specific columns excluded — NULL by design
     "performance_metrics": [
-        ("impressions", "discard"),
-        ("clicks",      "flag"),
-        ("likes",       "flag"),
-        ("shares",      "flag"),
-        ("comments",    "flag")
+        "impressions", "unique_reach", "clicks",
+        "likes", "shares", "comments", "is_verified"
     ]
 }
 
-total_nulls      = 0
-total_discarded  = 0
-total_flagged    = 0
-
+total_nulls = 0
 for table, columns in null_checks.items():
-    for col, action in columns:
+    for col in columns:
         cur.execute(f"SELECT COUNT(*) FROM {table} WHERE {col} IS NULL")
         count = cur.fetchone()[0]
-
         if count > 0:
+            log_warn(f"{table}.{col} — {count} null(s) found")
             total_nulls += count
-            print(f"  ⚠️  {table}.{col} — {count} null(s) found → action: {action}")
-
-            if action == "discard":
-                cur.execute(f"DELETE FROM {table} WHERE {col} IS NULL")
-                print(f"      → Discarded {count} row(s) from {table}")
-                total_discarded += count
-
-            elif action == "flag":
-                # Add a flag column if it doesn't exist
-                cur.execute(f"""
-                    DO $$
-                    BEGIN
-                        IF NOT EXISTS (
-                            SELECT 1 FROM information_schema.columns
-                            WHERE table_name = '{table}'
-                            AND column_name = 'data_quality_flag'
-                        ) THEN
-                            ALTER TABLE {table} ADD COLUMN data_quality_flag VARCHAR(100);
-                        END IF;
-                    END$$;
-                """)
-                cur.execute(f"""
-                    UPDATE {table}
-                    SET data_quality_flag = 'missing_{col}'
-                    WHERE {col} IS NULL
-                """)
-                print(f"      → Flagged {count} row(s) with 'missing_{col}'")
-                total_flagged += count
         else:
-            print(f"  ✅ {table}.{col} — no nulls")
+            log_success(f"{table}.{col} — no nulls")
 
-print(f"\n  Nulls found:     {total_nulls}")
-print(f"  Rows discarded:  {total_discarded}")
-print(f"  Rows flagged:    {total_flagged}")
+log_sub(f"\n  Total unexpected nulls: {total_nulls}")
 
-# ══════════════════════════════════════════════════════
-# 1b. IMPUTE PAYMENT_AMOUNT BY CAMPAIGN BUDGET TIER
-# ══════════════════════════════════════════════════════
-print("\n📋 CHECK 1b: IMPUTE MISSING PAYMENT AMOUNTS")
-print("-" * 60)
+# ── Intentional nullable fields — just report, don't flag ─────
+log_sub("\n  Intentionally nullable fields (expected):")
+cur.execute("SELECT COUNT(*) FROM creators WHERE creator_name IS NULL")
+log_info(f"creators.creator_name NULL: {cur.fetchone()[0]} (intentional)")
+cur.execute("SELECT COUNT(*) FROM creators WHERE niche IS NULL")
+log_info(f"creators.niche NULL: {cur.fetchone()[0]} (intentional)")
+cur.execute("SELECT COUNT(*) FROM campaigns WHERE product_id IS NULL")
+log_info(f"campaigns.product_id NULL: {cur.fetchone()[0]} (brand-level campaigns)")
+cur.execute("SELECT COUNT(*) FROM performance_metrics WHERE leads IS NULL")
+log_info(f"performance_metrics.leads NULL: {cur.fetchone()[0]} (non-lead campaigns)")
+cur.execute("SELECT COUNT(*) FROM performance_metrics WHERE conversions IS NULL")
+log_info(f"performance_metrics.conversions NULL: {cur.fetchone()[0]} (non-conversion campaigns)")
+cur.execute("SELECT COUNT(*) FROM performance_metrics WHERE revenue_generated IS NULL")
+log_info(f"performance_metrics.revenue_generated NULL: {cur.fetchone()[0]} (non-conversion campaigns)")
+cur.execute("SELECT COUNT(*) FROM performance_metrics WHERE lead_quality_score IS NULL")
+log_info(f"performance_metrics.lead_quality_score NULL: {cur.fetchone()[0]} (non-lead campaigns)")
 
-# Check if any payment_amount nulls exist first
+# ── payment_amount imputation by budget tier ──────────────────
+log_sub("\n  Checking collaborations.payment_amount...")
 cur.execute("SELECT COUNT(*) FROM collaborations WHERE payment_amount IS NULL")
 payment_nulls = cur.fetchone()[0]
 
 if payment_nulls > 0:
-    print(f"  ⚠️  {payment_nulls} missing payment_amount(s) found")
-    print(f"  → Imputing using average payment within same campaign budget tier\n")
-
-    # Tier averages — calculate average payment per budget tier
+    log_warn(f"{payment_nulls} null payment_amount(s) — imputing by budget tier")
     cur.execute("""
-        SELECT
-            CASE
-                WHEN c.budget < 10000               THEN 'small'
-                WHEN c.budget BETWEEN 10000 AND 50000 THEN 'medium'
-                ELSE                                      'large'
-            END AS tier,
-            ROUND(AVG(col.payment_amount)::NUMERIC, 2) AS avg_payment
-        FROM collaborations col
-        JOIN campaigns c ON col.campaign_id = c.campaign_id
-        WHERE col.payment_amount IS NOT NULL
-        GROUP BY tier
-    """)
-    tier_averages = {row[0]: row[1] for row in cur.fetchall()}
-    print(f"  Budget tier averages:")
-    for tier, avg in tier_averages.items():
-        print(f"    {tier.capitalize()} campaigns → avg payment: ${avg}")
-
-    # Impute null payment amounts using the tier average
-    cur.execute("""
-        UPDATE collaborations col
+        UPDATE collaborations c
         SET payment_amount = (
-            SELECT ROUND(AVG(col2.payment_amount)::NUMERIC, 2)
-            FROM collaborations col2
-            JOIN campaigns c2 ON col2.campaign_id = c2.campaign_id
-            WHERE col2.payment_amount IS NOT NULL
+            SELECT ROUND(AVG(c2.payment_amount), 2)
+            FROM collaborations c2
+            JOIN campaigns cam2 ON c2.campaign_id = cam2.campaign_id
+            JOIN campaigns cam  ON c.campaign_id  = cam.campaign_id
+            WHERE c2.payment_amount IS NOT NULL
             AND CASE
-                    WHEN c2.budget < 10000                THEN 'small'
-                    WHEN c2.budget BETWEEN 10000 AND 50000 THEN 'medium'
-                    ELSE                                       'large'
-                END = CASE
-                    WHEN c.budget < 10000                THEN 'small'
-                    WHEN c.budget BETWEEN 10000 AND 50000 THEN 'medium'
-                    ELSE                                       'large'
-                END
+                WHEN cam.budget < 10000  THEN 'small'
+                WHEN cam.budget <= 50000 THEN 'medium'
+                ELSE 'large'
+            END =
+            CASE
+                WHEN cam2.budget < 10000  THEN 'small'
+                WHEN cam2.budget <= 50000 THEN 'medium'
+                ELSE 'large'
+            END
         )
-        FROM campaigns c
-        WHERE col.campaign_id = c.campaign_id
-        AND col.payment_amount IS NULL
+        WHERE c.payment_amount IS NULL
     """)
-    print(f"\n  ✅ Imputed {payment_nulls} payment amount(s) using tier averages")
+    log_success("payment_amount imputed using budget tier averages")
 else:
-    print(f"  ✅ No missing payment amounts found")
+    log_success("collaborations.payment_amount — no nulls")
 
-# ══════════════════════════════════════════════════════
-# 2. CHECK FOR DUPLICATE ROWS
-# ══════════════════════════════════════════════════════
-print("  ℹ️  Note: Name-only matches for companies and creators")
-print("  are not treated as duplicates — same names can belong")
-print("  to distinct real-world entities (different industries,")
-print("  niches, and follower counts confirm this).\n")
+# ══════════════════════════════════════════════════════════════
+# 2. CREATOR DATA QUALITY AUDIT
+# ══════════════════════════════════════════════════════════════
+log_header("CHECK 2: CREATOR DATA QUALITY AUDIT")
 
+# Creators missing name only
+cur.execute("""
+    SELECT COUNT(*) FROM creators
+    WHERE creator_name IS NULL AND niche IS NOT NULL
+""")
+missing_name = cur.fetchone()[0]
 
-print("\n📋 CHECK 2: DUPLICATE ROWS")
-print("-" * 60)
+# Creators missing niche only
+cur.execute("""
+    SELECT COUNT(*) FROM creators
+    WHERE niche IS NULL AND creator_name IS NOT NULL
+""")
+missing_niche = cur.fetchone()[0]
+
+# Creators missing both
+cur.execute("""
+    SELECT COUNT(*) FROM creators
+    WHERE creator_name IS NULL AND niche IS NULL
+""")
+missing_both = cur.fetchone()[0]
+
+# Creators with no platform linked
+cur.execute("""
+    SELECT COUNT(*) FROM creators c
+    LEFT JOIN creator_platforms cp ON c.creator_id = cp.creator_id
+    WHERE cp.platform_id IS NULL
+""")
+missing_platform = cur.fetchone()[0]
+
+log_info(f"Creators missing name only:     {missing_name}")
+log_info(f"Creators missing niche only:    {missing_niche}")
+log_info(f"Creators missing both:          {missing_both}")
+log_info(f"Creators with no platform:      {missing_platform}")
+
+total_incomplete = missing_name + missing_niche + missing_both + missing_platform
+log_sub(f"\n  Total incomplete creator records: {total_incomplete}")
+log_info("These will be flagged and excluded from KPI analysis")
+
+# ══════════════════════════════════════════════════════════════
+# 3. DUPLICATE CHECKS
+# ══════════════════════════════════════════════════════════════
+log_header("CHECK 3: DUPLICATE ROWS")
+log_info("Note: UNIQUE constraints on company_name and (brand_name, company_id)")
+log_info("prevent true duplicates at the database level.\n")
 
 duplicate_checks = {
-    "platforms":        ["platform_name"],
-    "campaigns":        ["campaign_name", "brand_id"],
+    "platforms":               ["platform_name"],
     "creator_platforms":       ["creator_id", "platform_id"],
     "collaboration_platforms": ["collaboration_id", "platform_id"],
 }
@@ -189,184 +167,185 @@ total_dupes = 0
 for table, columns in duplicate_checks.items():
     col_list = ", ".join(columns)
     cur.execute(f"""
-        SELECT {col_list}, COUNT(*) AS count
+        SELECT {col_list}, COUNT(*) as count
         FROM {table}
         GROUP BY {col_list}
         HAVING COUNT(*) > 1
     """)
     dupes = cur.fetchall()
     if dupes:
-        print(f"  ⚠️  {table} — {len(dupes)} duplicate group(s) found:")
+        log_warn(f"{table} — {len(dupes)} duplicate(s) found:")
         for d in dupes[:3]:
-            print(f"      {d}")
-        print(f"      → Logged for review, no auto-delete (manual inspection recommended)")
+            log_sub(f"    {d}")
         total_dupes += len(dupes)
     else:
-        print(f"  ✅ {table} — no duplicates")
+        log_success(f"{table} — no duplicates")
 
-print(f"\n  Total duplicate groups found: {total_dupes}")
+log_sub(f"\n  Total duplicate groups: {total_dupes}")
 
-# ══════════════════════════════════════════════════════
-# 3. VALIDATE NUMERIC RANGES
-# ══════════════════════════════════════════════════════
-print("\n📋 CHECK 3: NUMERIC RANGE VALIDATION")
-print("-" * 60)
+# ══════════════════════════════════════════════════════════════
+# 4. NUMERIC RANGE VALIDATION
+# ══════════════════════════════════════════════════════════════
+log_header("CHECK 4: NUMERIC RANGE VALIDATION")
 
 numeric_checks = [
-    ("creators",            "follower_count", "follower_count < 0",    "Negative follower count",   "discard"),
-    ("creators",            "post_count",     "post_count < 0",        "Negative post count",       "discard"),
-    ("campaigns",           "budget",         "budget <= 0",           "Zero or negative budget",   "flag"),
-    ("collaborations",      "payment_amount", "payment_amount <= 0",   "Zero or negative payment",  "flag"),
-    ("performance_metrics", "impressions",    "impressions < 0",       "Negative impressions",      "discard"),
-    ("performance_metrics", "clicks",         "clicks < 0",            "Negative clicks",           "discard"),
-    ("performance_metrics", "likes",          "likes < 0",             "Negative likes",            "discard"),
-    ("performance_metrics", "shares",         "shares < 0",            "Negative shares",           "discard"),
-    ("performance_metrics", "comments",       "comments < 0",          "Negative comments",         "discard"),
-    ("performance_metrics", "clicks",         "clicks > impressions",  "Clicks exceed impressions", "discard"),
-    ("performance_metrics", "likes",          "likes > impressions",   "Likes exceed impressions",  "discard"),
+    ("creators",            "follower_count",  "follower_count < 0",        "Negative follower count"),
+    ("creators",            "post_count",      "post_count < 0",            "Negative post count"),
+    ("campaigns",           "budget",          "budget <= 0",               "Zero or negative budget"),
+    ("collaborations",      "payment_amount",  "payment_amount <= 0",       "Zero or negative payment"),
+    ("performance_metrics", "impressions",     "impressions <= 0",          "Zero or negative impressions"),
+    ("performance_metrics", "unique_reach",    "unique_reach < 0",          "Negative unique reach"),
+    ("performance_metrics", "clicks",          "clicks < 0",                "Negative clicks"),
+    ("performance_metrics", "likes",           "likes < 0",                 "Negative likes"),
+    ("performance_metrics", "shares",          "shares < 0",                "Negative shares"),
+    ("performance_metrics", "comments",        "comments < 0",              "Negative comments"),
+    ("performance_metrics", "leads",           "leads < 0",                 "Negative leads"),
+    ("performance_metrics", "conversions",     "conversions < 0",           "Negative conversions"),
+    ("performance_metrics", "revenue_generated","revenue_generated < 0",    "Negative revenue"),
+    ("performance_metrics", "lead_quality_score","lead_quality_score < 0 OR lead_quality_score > 100", "Invalid lead quality score"),
+]
+
+# Cross-column checks — these are already enforced by DB constraints
+# but we check anyway to report on data quality
+cross_checks = [
+    ("clicks > impressions",     "Clicks exceed impressions"),
+    ("unique_reach > impressions","Unique reach exceeds impressions"),
+    ("likes > impressions",       "Likes exceed impressions"),
 ]
 
 total_range_issues = 0
-for table, col, condition, label, action in numeric_checks:
+for table, col, condition, label in numeric_checks:
     cur.execute(f"SELECT COUNT(*) FROM {table} WHERE {condition}")
     count = cur.fetchone()[0]
-
     if count > 0:
-        print(f"  ⚠️  {label} in {table} — {count} row(s) → action: {action}")
-        if action == "discard":
-            cur.execute(f"DELETE FROM {table} WHERE {condition}")
-            print(f"      → Discarded {count} row(s)")
-        elif action == "flag":
-            cur.execute(f"""
-                DO $$
-                BEGIN
-                    IF NOT EXISTS (
-                        SELECT 1 FROM information_schema.columns
-                        WHERE table_name = '{table}'
-                        AND column_name = 'data_quality_flag'
-                    ) THEN
-                        ALTER TABLE {table} ADD COLUMN data_quality_flag VARCHAR(100);
-                    END IF;
-                END$$;
-            """)
-            cur.execute(f"""
-                UPDATE {table}
-                SET data_quality_flag = '{label.lower().replace(' ', '_')}'
-                WHERE {condition}
-            """)
-            print(f"      → Flagged {count} row(s)")
+        log_warn(f"{label} in {table}.{col} — {count} row(s)")
         total_range_issues += count
     else:
-        print(f"  ✅ {label} — none found")
+        log_success(f"{label} — none found")
 
-print(f"\n  Total range issues found: {total_range_issues}")
+log_sub("\n  Cross-column validation:")
+for condition, label in cross_checks:
+    cur.execute(f"SELECT COUNT(*) FROM performance_metrics WHERE {condition}")
+    count = cur.fetchone()[0]
+    if count > 0:
+        log_warn(f"{label} — {count} row(s)")
+        total_range_issues += count
+    else:
+        log_success(f"{label} — none found")
 
-# ══════════════════════════════════════════════════════
-# 4. VALIDATE DATE RANGES
-# ══════════════════════════════════════════════════════
-print("\n📋 CHECK 4: DATE RANGE VALIDATION")
-print("-" * 60)
+log_sub(f"\n  Total range issues: {total_range_issues}")
+
+# ══════════════════════════════════════════════════════════════
+# 5. DATE RANGE VALIDATION
+# ══════════════════════════════════════════════════════════════
+log_header("CHECK 5: DATE RANGE VALIDATION")
 
 date_checks = [
-    ("campaigns", "end_date < start_date",     "Campaign end before start date",    "discard"),
-    ("campaigns", "start_date < '2020-01-01'", "Campaign start date too old",       "flag"),
-    ("campaigns", "end_date > '2026-12-31'",   "Campaign end date too far future",  "flag"),
-    ("performance_metrics", "metric_date < '2020-01-01'", "Metric date too old",   "discard"),
+    ("campaigns", "end_date < start_date",      "Campaign end before start"),
+    ("campaigns", "start_date < '2022-01-01'",  "Campaign start before 2022"),
+    ("campaigns", "end_date > '2025-12-31'",    "Campaign end after 2025"),
+    ("performance_metrics", "metric_date < '2022-01-01'", "Metric date before 2022"),
+    ("performance_metrics", "metric_date > '2025-12-31'", "Metric date after 2025"),
 ]
+
+# Check metric dates fall within their campaign window
+cur.execute("""
+    SELECT COUNT(*)
+    FROM performance_metrics pm
+    JOIN collaborations col ON pm.collaboration_id = col.collaboration_id
+    JOIN campaigns cam ON col.campaign_id = cam.campaign_id
+    WHERE pm.metric_date < cam.start_date
+       OR pm.metric_date > cam.end_date
+""")
+out_of_window = cur.fetchone()[0]
 
 total_date_issues = 0
-for table, condition, label, action in date_checks:
+for table, condition, label in date_checks:
     cur.execute(f"SELECT COUNT(*) FROM {table} WHERE {condition}")
     count = cur.fetchone()[0]
-
     if count > 0:
-        print(f"  ⚠️  {label} — {count} row(s) → action: {action}")
-        if action == "discard":
-            cur.execute(f"DELETE FROM {table} WHERE {condition}")
-            print(f"      → Discarded {count} row(s)")
-        elif action == "flag":
-            cur.execute(f"""
-                DO $$
-                BEGIN
-                    IF NOT EXISTS (
-                        SELECT 1 FROM information_schema.columns
-                        WHERE table_name = '{table}'
-                        AND column_name = 'data_quality_flag'
-                    ) THEN
-                        ALTER TABLE {table} ADD COLUMN data_quality_flag VARCHAR(100);
-                    END IF;
-                END$$;
-            END$$;
-            """)
-            cur.execute(f"""
-                UPDATE {table}
-                SET data_quality_flag = '{label.lower().replace(' ', '_')}'
-                WHERE {condition}
-            """)
-            print(f"      → Flagged {count} row(s)")
+        log_warn(f"{label} — {count} row(s)")
         total_date_issues += count
     else:
-        print(f"  ✅ {label} — none found")
+        log_success(f"{label} — none found")
 
-print(f"\n  Total date issues found: {total_date_issues}")
+if out_of_window > 0:
+    log_warn(f"Metric dates outside campaign window — {out_of_window} row(s)")
+    total_date_issues += out_of_window
+else:
+    log_success("All metric dates fall within campaign windows")
 
-# ══════════════════════════════════════════════════════
-# 5. STANDARDIZE TEXT FORMATTING
-# ══════════════════════════════════════════════════════
-print("\n📋 CHECK 5: TEXT FORMATTING")
-print("-" * 60)
+log_sub(f"\n  Total date issues: {total_date_issues}")
 
-text_checks = [
-    ("creators", "niche",           "INITCAP(niche)"),
-    ("brands",   "industry",        "INITCAP(industry)"),
-    ("platforms","platform_name",   "INITCAP(platform_name)"),
-    ("campaigns","campaign_type",   "INITCAP(campaign_type)"),
-    ("campaigns","campaign_goal",   "INITCAP(campaign_goal)"),
-    ("creators", "content_type",    "INITCAP(content_type)") if False else None,
+# ══════════════════════════════════════════════════════════════
+# 6. TEXT FORMATTING
+# ══════════════════════════════════════════════════════════════
+log_header("CHECK 6: TEXT FORMATTING")
+
+text_fixes = [
+    ("creators",  "niche",         "creators.niche"),
+    ("brands",    "industry",      "brands.industry"),
+    ("platforms", "platform_name", "platforms.platform_name"),
+    ("campaigns", "campaign_goal", "campaigns.campaign_goal"),
+    ("campaigns", "campaign_type", "campaigns.campaign_type"),
 ]
 
-# Remove None entries
-text_checks = [t for t in text_checks if t is not None]
-
 total_text_fixes = 0
-for table, col, fix in text_checks:
+for table, col, label in text_fixes:
     cur.execute(f"""
         SELECT COUNT(*) FROM {table}
         WHERE {col} IS NOT NULL
-        AND {col} != {fix}
+        AND {col} != INITCAP({col})
     """)
     count = cur.fetchone()[0]
     if count > 0:
-        cur.execute(f"UPDATE {table} SET {col} = {fix} WHERE {col} != {fix}")
-        print(f"  ✅ {table}.{col} — fixed {count} casing issue(s)")
+        log_warn(f"{label} — {count} inconsistent casing found")
+        cur.execute(f"""
+            UPDATE {table} SET {col} = INITCAP({col})
+            WHERE {col} IS NOT NULL
+        """)
+        log_success(f"Fixed: {label} standardized to title case")
         total_text_fixes += count
     else:
-        print(f"  ✅ {table}.{col} — casing is consistent")
+        log_success(f"{label} — casing consistent")
 
-print(f"\n  Total text fixes applied: {total_text_fixes}")
+# ══════════════════════════════════════════════════════════════
+# 7. VERIFIED DATA QUALITY CHECK
+# ══════════════════════════════════════════════════════════════
+log_header("CHECK 7: DATA VERIFICATION STATUS")
 
-# ══════════════════════════════════════════════════════
-# FINAL SUMMARY
-# ══════════════════════════════════════════════════════
-print("\n" + "=" * 60)
-print("📊 CLEANING SUMMARY")
-print("=" * 60)
-print(f"  Null values found:         {total_nulls}")
-print(f"  Rows discarded:            {total_discarded}")
-print(f"  Rows flagged:              {total_flagged}")
-print(f"  Payment amounts imputed:   {payment_nulls}")
-print(f"  Duplicate groups found:    {total_dupes}")
-print(f"  Numeric range issues:      {total_range_issues}")
-print(f"  Date issues found:         {total_date_issues}")
-print(f"  Text fixes applied:        {total_text_fixes}")
+cur.execute("SELECT COUNT(*) FROM performance_metrics WHERE is_verified = TRUE")
+verified = cur.fetchone()[0]
+cur.execute("SELECT COUNT(*) FROM performance_metrics WHERE is_verified = FALSE")
+unverified = cur.fetchone()[0]
+total_pm = verified + unverified
+pct = round((unverified / total_pm) * 100, 2) if total_pm > 0 else 0
+
+log_info(f"Verified rows:   {verified}")
+log_warn(f"Unverified rows: {unverified} ({pct}% of total)")
+log_info("Unverified rows will be excluded from KPI calculations in the materialized view")
+
+# ══════════════════════════════════════════════════════════════
+# SUMMARY
+# ══════════════════════════════════════════════════════════════
+log_header("CLEANING SUMMARY")
+log_sub(f"  Unexpected nulls found:        {total_nulls}")
+log_sub(f"  Payment nulls imputed:         {payment_nulls}")
+log_sub(f"  Incomplete creator records:    {total_incomplete}")
+log_sub(f"  Duplicate groups found:        {total_dupes}")
+log_sub(f"  Numeric range issues:          {total_range_issues}")
+log_sub(f"  Date issues found:             {total_date_issues}")
+log_sub(f"  Text fixes applied:            {total_text_fixes}")
+log_sub(f"  Unverified metric rows:        {unverified}")
+log_sub(f"  Rows discarded:                0")
 
 total_issues = total_nulls + total_dupes + total_range_issues + total_date_issues
 if total_issues == 0:
-    print("\n  ✅ Data is clean and ready for KPI calculation!")
+    log_success("Data is clean and ready for KPI calculations!")
 else:
-    print(f"\n  ⚠️  {total_issues} issue(s) found and handled — review above for details")
+    log_warn(f"{total_issues} issue(s) found — review above")
 
 conn.commit()
 cur.close()
 conn.close()
-print("\n✅ Connection closed")
+log_success("Connection closed")
