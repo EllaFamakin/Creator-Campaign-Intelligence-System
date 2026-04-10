@@ -258,12 +258,20 @@ for brand_id in brands:
     for _ in range(random.randint(1, 3)):
         goal       = random.choice(GOALS)
         camp_type  = random.choice(GOAL_TYPE_MAP[goal])
-        start_date = fake.date_between(
-            start_date=date(2022, 1, 1),
-            end_date=date(2025, 6, 1)
-        )
-        duration   = random.randint(14, 90)
-        end_date   = start_date + timedelta(days=duration)
+        # Brand Ambassador campaigns run longer than other types
+        if camp_type == 'Brand Ambassador':
+            duration = random.randint(90, 1095)  # 3 months to 3 years
+            start_date = fake.date_between(
+                start_date=date(2022, 1, 1),
+                end_date=date(2023, 1, 1)  # ensures end stays within 2025
+            )
+        else:
+            duration = random.randint(14, 90)    # 2 weeks to 3 months
+            start_date = fake.date_between(
+                start_date=date(2022, 1, 1),
+                end_date=date(2025, 6, 1)
+            )
+        end_date = start_date + timedelta(days=duration)
         budget     = round(random.uniform(5000, 150000), 2)
         product_id = random.choice(brand_products + [None])
 

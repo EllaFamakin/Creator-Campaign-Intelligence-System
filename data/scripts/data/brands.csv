@@ -1,100 +1,100 @@
 brand_id,brand_name,company_id,industry
-1,"Beard, Peters and Black",1,Fitness
-2,"Lucas, Parker and Alexander",1,Beauty
-3,Anderson-Bailey,1,Fashion
-4,"Pierce, Bell and Chavez",2,Tech
-5,"Lewis, Kennedy and Santana",3,Fitness
-6,Ford-Baxter,4,Fitness
-7,Ramirez Group,4,Health
-8,Perez-White,4,Beauty
-9,Jackson-Lawson,5,Fitness
-10,Howell and Sons,6,Tech
-11,Freeman-Chang,7,Beauty
-12,Hernandez PLC,7,Tech
-13,Rodriguez-Hall,7,Health
-14,Cook-Hines,8,Travel
-15,Peterson-Beard,9,Fashion
-16,"Guerrero, Peck and Coleman",9,Beauty
-17,"Mccall, Hanson and Alvarado",9,Food & Beverage
-18,"Lawson, Morris and Ramos",10,Health
-19,"Burns, Hernandez and Ryan",10,Gaming
-20,Manning Group,10,Fashion
-21,Harvey PLC,11,Tech
-22,"Fisher, Wilson and Brown",12,Fitness
-23,Hancock Inc,12,Fitness
-24,Diaz Inc,13,Fitness
-25,"Daniels, Adkins and Brown",13,Gaming
-26,"Carroll, Sullivan and Bass",14,Fashion
-27,Henderson-Bernard,14,Beauty
-28,Scott Ltd,15,Travel
-29,Jones-Soto,15,Fitness
-30,Hughes-Alvarado,15,Health
-31,Wolf-Harris,16,Fashion
-32,Novak PLC,17,Gaming
-33,Coffey-Phillips,17,Tech
-34,Torres-Pope,17,Fitness
-35,Gonzalez Group,18,Tech
-36,Reid-Poole,19,Fitness
-37,Larson-Holloway,19,Tech
-38,"Harvey, Davis and Crane",20,Health
-39,King-Miller,21,Travel
-40,"Harrison, Johnson and Roberts",21,Gaming
-41,Byrd-Le,22,Gaming
-42,Curry Inc,23,Tech
-43,Price LLC,23,Fashion
-44,Moore-Bass,24,Fitness
-45,Russell-Daniels,24,Food & Beverage
-46,"Smith, Gilmore and Johnston",24,Tech
-47,Walker-Jones,25,Travel
-48,"Barnett, Rogers and Snyder",26,Fashion
-49,"Suarez, Shields and Hill",26,Tech
-50,Donovan-Harris,27,Gaming
-51,Hernandez Inc,27,Beauty
-52,Johnson-Carlson,27,Tech
-53,Medina-Navarro,28,Gaming
-54,Williams Inc,29,Fashion
-55,Holt-Torres,29,Fitness
-56,Johnston-Odonnell,30,Gaming
-57,Harris-Walters,31,Travel
-58,Figueroa PLC,32,Travel
-59,"Parker, Ortiz and Powell",32,Food & Beverage
-60,"Winters, Newman and Brown",33,Food & Beverage
-61,Davis-Lewis,33,Tech
-62,Wilson-Jones,34,Fashion
-63,Bailey-Cook,34,Health
-64,Garcia-Jennings,34,Health
-65,Smith PLC,35,Tech
-66,Rowe Group,35,Food & Beverage
-67,Castaneda-Rodriguez,36,Travel
-68,"Turner, Schneider and Johnson",36,Fitness
-69,"Evans, Stewart and Walton",36,Beauty
-70,Williams-Cook,37,Food & Beverage
-71,"Holmes, Williams and Wright",38,Food & Beverage
-72,Cortez LLC,38,Health
-73,Strickland-Palmer,38,Fitness
-74,Lewis-Murphy,39,Health
-75,Harvey-Allen,39,Travel
-76,"Bentley, Byrd and Orr",40,Fashion
-77,Tran Inc,40,Beauty
-78,Sandoval-Cunningham,40,Fitness
-79,Santana-Byrd,41,Fashion
-80,Lopez-Martinez,41,Gaming
-81,"Ramirez, Strickland and Washington",41,Fitness
-82,"Branch, Torres and Oliver",42,Health
-83,"Wood, Hunter and Peterson",42,Food & Beverage
-84,Erickson and Sons,43,Beauty
-85,"Smith, Montoya and Evans",43,Fashion
-86,Brennan-Johnson,44,Food & Beverage
-87,Good-Hodges,44,Fitness
-88,"Mckee, Gardner and Davenport",44,Fashion
-89,"Ramsey, Whitney and Coffey",45,Tech
-90,May-Ross,45,Food & Beverage
-91,Garcia-Lozano,45,Gaming
+1,Bailey-Cook,1,Fitness
+2,Stein-Silva,1,Beauty
+3,Davis Ltd,1,Fashion
+4,Bright-Francis,2,Tech
+5,"Alvarado, Miller and Patterson",3,Fitness
+6,"Hall, Baker and Moody",4,Fitness
+7,Stewart Ltd,4,Health
+8,"Brennan, Wallace and Benson",4,Beauty
+9,"Smith, Gilmore and Johnston",5,Fitness
+10,Vargas Ltd,6,Tech
+11,Hancock and Sons,7,Beauty
+12,Chandler-Edwards,7,Tech
+13,Hicks-Hill,7,Health
+14,Howard-Jordan,8,Travel
+15,"Turner, Ortiz and Taylor",9,Fashion
+16,Ramirez-Bean,9,Beauty
+17,Russell Group,9,Food & Beverage
+18,"Wood, Hunter and Peterson",10,Health
+19,Miller Ltd,10,Gaming
+20,Jimenez Ltd,10,Fashion
+21,Moore-Bass,11,Tech
+22,Russell-Daniels,12,Fitness
+23,"Adams, Christian and Rivas",12,Fitness
+24,Schmidt PLC,13,Fitness
+25,"Thomas, Murray and King",13,Gaming
+26,Davis PLC,14,Fashion
+27,Jones LLC,14,Beauty
+28,Johnson-Rogers,15,Travel
+29,"Tapia, Vaughn and Lee",15,Fitness
+30,Roberts-Landry,15,Health
+31,Sanders-Espinoza,16,Fashion
+32,"Harper, Smith and Buchanan",17,Gaming
+33,Riggs PLC,17,Tech
+34,Patton-Jenkins,17,Fitness
+35,Dickson-Brady,18,Tech
+36,"Bentley, Byrd and Orr",19,Fitness
+37,Jackson-Lawson,19,Tech
+38,"Harrison, Johnson and Roberts",20,Health
+39,Garner-Thornton,21,Travel
+40,Hernandez Ltd,21,Gaming
+41,"Wright, Garcia and Deleon",22,Gaming
+42,Smith-Grimes,23,Tech
+43,Torres Group,23,Fashion
+44,Dean-Jimenez,24,Fitness
+45,Estrada-Nolan,24,Food & Beverage
+46,Johnson-Carlson,24,Tech
+47,"Simmons, Meadows and Griffin",25,Travel
+48,Johnston-Hines,26,Fashion
+49,"Nelson, Morton and Medina",26,Tech
+50,Morgan-Schwartz,27,Gaming
+51,Sheppard LLC,27,Beauty
+52,Harrison-Alexander,27,Tech
+53,"Lucas, Parker and Alexander",28,Gaming
+54,"Diaz, Anderson and Browning",29,Fashion
+55,"Schmidt, Hansen and Stewart",29,Fitness
+56,Walsh LLC,30,Gaming
+57,Larson-Holloway,31,Travel
+58,Lam LLC,32,Travel
+59,Hernandez Inc,32,Food & Beverage
+60,"Hensley, Powell and David",33,Food & Beverage
+61,Henderson-Bernard,33,Tech
+62,Scott Ltd,34,Fashion
+63,"Joyce, Wilson and Lam",34,Health
+64,Miller-Wright,34,Health
+65,"Morris, Thompson and Williams",35,Tech
+66,"Hernandez, Martinez and Weber",35,Food & Beverage
+67,Short-Garcia,36,Travel
+68,Castaneda-Ashley,36,Fitness
+69,Donovan-Harris,36,Beauty
+70,"Hernandez, Thompson and Boyd",37,Food & Beverage
+71,White-Lewis,38,Food & Beverage
+72,Erickson and Sons,38,Health
+73,Byrd-Le,38,Fitness
+74,"Edwards, Baker and Anderson",39,Health
+75,Spencer-Lee,39,Travel
+76,"Beard, Peters and Black",40,Fashion
+77,Taylor and Sons,40,Beauty
+78,"Lawson, Morris and Ramos",40,Fitness
+79,Perez-White,41,Fashion
+80,Rowe Group,41,Gaming
+81,"Booker, Jones and Harrington",41,Fitness
+82,Hancock Inc,42,Health
+83,Pollard and Sons,42,Food & Beverage
+84,"Holmes, Williams and Wright",43,Beauty
+85,Bruce-Gonzalez,43,Fashion
+86,Novak PLC,44,Food & Beverage
+87,Smith-Frost,44,Fitness
+88,Bowen Group,44,Fashion
+89,Rodriguez-Hall,45,Tech
+90,Burgess-Thompson,45,Food & Beverage
+91,"Sanchez, Wheeler and Harvey",45,Gaming
 92,Johnson-Doyle,46,Beauty
-93,Warner-Gibson,47,Gaming
-94,"Sanford, Rivera and Garcia",47,Travel
-95,Hancock and Sons,47,Beauty
-96,Christensen PLC,48,Gaming
-97,Hayes and Sons,49,Tech
-98,Green-Wright,49,Beauty
-99,Stein-Silva,50,Fitness
+93,"Pierce, Bell and Chavez",47,Gaming
+94,Santana-Byrd,47,Travel
+95,Brock-Mcdonald,47,Beauty
+96,Coffey-Phillips,48,Gaming
+97,"Mccall, Hanson and Alvarado",49,Tech
+98,"Ramirez, Strickland and Washington",49,Beauty
+99,"Branch, Torres and Oliver",50,Fitness
