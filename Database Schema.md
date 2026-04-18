@@ -86,7 +86,7 @@
 - comments
 
 
-## SCENARIO AND RELATIONSHIPS
+## BUSINESS DOMAIN AND RULES
 
 There are various companies based in the U.S. and each company runs at least one campaign for new or existing products and brands
 
