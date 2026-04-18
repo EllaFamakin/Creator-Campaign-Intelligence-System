@@ -123,7 +123,7 @@ The interactive Tableau dashboard is published on Tableau Public and covers thre
 | Creator Intelligence | Niche effectiveness, creator tier analysis, red flag detection |
 | Campaign & Platform Performance | Campaign type vs goal, platform comparison, CPM analysis, duration vs performance |
 
-**[View Live Dashboard](https://public.tableau.com/app/profile/daniella.famakin/viz/CreatorIntelligencePlatform)**
+**[View Live Dashboard](https://public.tableau.com/app/profile/daniella.famakin/vizzes)**
 
 ---
 
