@@ -6,7 +6,7 @@
 - PostgreSQL 18 installed — [Download here](https://www.postgresql.org/download/windows/)
 - Python 3.x installed — [Download here](https://www.python.org/downloads/)
 - VS Code installed — [Download here](https://code.visualstudio.com/)
-
+  
 ### Step 1 — Clone the repository
 ```bash
 git clone https://github.com/EllaFamakin/Creator-Campaign-Intelligence-System.git
